@@ -1,0 +1,62 @@
+🧠 Task: Extract Method Refactoring and Test Generation for dft
+You are tasked with improving the testability of an MPI-based implementation of the discrete Fourier transform (DFT). Your goal is to refactor the function into smaller, testable methods, and then generate unit tests for the new methods.
+
+📍Target Function
+File: generated-code.hpp
+
+Function:
+	void dft(std::vector<double> const& x, std::vector<std::complex<double>> &output)
+Description: This is an MPI-based parallel implementation of the DFT. You will be performing extract method refactorings to improve testability.
+
+✅ Your Tasks (Step-by-Step)
+Step 1: Recommend Refactoring
+Analyze the target function and provide:
+
+A list of recommended extract method refactorings
+
+For each, include:
+
+1. Line numbers of code to be extracted
+
+2. A justification for why it should be extracted (e.g., isolation of pure logic, reducing MPI dependencies, improving reuse or readability)
+
+Step 2: Perform Refactoring
+Refactor the code as per your recommendations by extracting the selected regions into named functions.
+
+Each new function should reside in the same file or a nearby helper file.
+
+Refactor with unit testability in mind: prefer pure functions, parameterize I/O, and isolate side effects where possible.
+
+Step 3: Recommend Tests
+For each extracted method, recommend one or more unit tests.
+
+For each test, provide:
+
+1. A brief description of the test
+
+2. A justification (e.g., boundary case, correctness of loop logic, complex number handling)
+
+Step 4: Generate Tests
+Implement the recommended tests and place them in a test/ directory.
+
+Choose a C++ testing framework (e.g., Google Test, Catch2, or your own test harness).
+
+Include a simple CMakeLists.txt or compile script if needed.
+
+The test suite should only test the extracted methods, not MPI itself.
+
+🧪 Sanity Check
+To verify that your refactoring has not altered behavior:
+
+Run:
+
+./build-driver.sh
+./run-driver.sh
+
+This compares the output of your refactored MPI implementation to a serial DFT. You must pass this check.
+
+⚙️ Environment Requirements
+You must install MPI (e.g., OpenMPI or MPICH) to compile and run this project.
+
+All dependencies should be available through standard package managers or documented clearly.
+
